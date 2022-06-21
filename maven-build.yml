@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: LocalAGPL
+  name: LocalAGPL
 
 steps:
 - task: Maven@3
