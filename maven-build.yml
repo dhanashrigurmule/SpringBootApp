@@ -21,8 +21,8 @@ steps:
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
 
-- task: CopyPublishBuildArtifacts@1
+- task: PublishBuildArtifacts@1
   inputs:
-    Contents: '*.war*'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
-    ArtifactType: 'Container'
+    publishLocation: 'Container'
