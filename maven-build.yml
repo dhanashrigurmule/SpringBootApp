@@ -6,26 +6,46 @@
 trigger:
 - main
 
-pool:
-  name: LocalAGPL
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:
+  - job: MavenPackageAndPublishArtifacts
+    displayName: Maven Package and Publish Artifacts
+    pool:
+      name: LocalAGPL
 
-steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+  steps:
+  - task: Maven@3
+    displayName: 'Maven Package'
+    inputs:
+      mavenPomFile: 'pom.xml'
+      mavenOptions: '-Xmx3072m'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.8'
+      jdkArchitectureOption: 'x64'
+      publishJUnitResults: true
+      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+      goals: 'package'
 
-- task: CopyPublishBuildArtifacts@1
-  inputs:
-    CopyRoot: 'D:\softwares\azure\vsts-agent-win-x64-2.204.0\_work\10\s\target'
-    Contents: '*.war*'
-    ArtifactName: 'demo-2.7.0.war'
-    ArtifactType: 'Container'
-    TargetPath: 'https://github.com/dhanashrigurmule/SpringBootApp/blob/main/'
+  #- task: CopyPublishBuildArtifacts@1
+  #  displayName: 'Copy Files to artifact staging directory'
+  #  inputs:
+  #    CopyRoot: 'D:\softwares\azure\vsts-agent-win-x64-2.204.0\_work\10\s\target'
+  #    Contents: '*.war*'
+  #    ArtifactName: 'demo-2.7.0.war'
+  #    ArtifactType: 'Container'
+  #    TargetPath: 'https://github.com/dhanashrigurmule/SpringBootApp/blob/main/'
 
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: '$(System.DefaultWorkingDirectory)'
+      Contents: '**/target/*.?(war|jar)'
+      TargetFolder: 'TargetFolder: $(Build.ArtifactStagingDirectory)'
+
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(Pipeline.Workspace)'
+      artifact: drop
+      publishLocation: 'pipeline'
+  
