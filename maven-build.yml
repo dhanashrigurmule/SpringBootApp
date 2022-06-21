@@ -20,3 +20,11 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+
+- task: CopyPublishBuildArtifacts@1
+  inputs:
+    CopyRoot: 'D:\softwares\azure\vsts-agent-win-x64-2.204.0\_work\10\s\target'
+    Contents: '*.war*'
+    ArtifactName: 'demo-2.7.0.war'
+    ArtifactType: 'Container'
+    TargetPath: 'D:\temp'
