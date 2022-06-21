@@ -27,4 +27,5 @@ steps:
     Contents: '*.war*'
     ArtifactName: 'demo-2.7.0.war'
     ArtifactType: 'Container'
-    TargetPath: 'D:\temp'
+    TargetPath: 'https://github.com/dhanashrigurmule/SpringBootApp/blob/main/'
+
