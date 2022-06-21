@@ -21,28 +21,8 @@ steps:
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
 
-- task: CopyFiles@2
+- task: CopyPublishBuildArtifacts@1
   inputs:
-    Contents: '**.war*'
-    TargetFolder: '$(build.artifactstagingdirectory)'
-
-#- task: PublishBuildArtifacts@1
-#  inputs:
-#    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-#    ArtifactName: 'drop'
-#    publishLocation: 'Container'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    Contents: '*.war*'
     ArtifactName: 'drop'
-    publishLocation: 'FilePath'
-    TargetPath: 'D:\workspace\Dhanashri\terra\Backup'
-  
-#- task: DownloadBuildArtifacts@1
-#  inputs:
-#    buildType: 'current'
-#    downloadType: 'single'
-#    artifactName: 'drop'
-#    downloadPath: '$(Build.ArtifactStagingDirectory)'
-
+    ArtifactType: 'Container'
