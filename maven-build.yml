@@ -37,5 +37,5 @@ steps:
     buildType: 'current'
     downloadType: 'single'
     artifactName: 'drop'
-    downloadPath: '$(System.ArtifactsDirectory)'
+    downloadPath: '$(Build.ArtifactStagingDirectory)'
 
