@@ -37,6 +37,12 @@ steps:
 - task: DockerInstaller@0
   inputs:
     dockerVersion: '17.09.0-ce'
+  
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'https://github.com/dhanashrigurmule/SpringBootApp/blob/main/src/main/java/com/example/amol/demo/Dockerfile'
+    Contents: 'Dockerfile'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
     
 - task: Docker@2
   inputs:
