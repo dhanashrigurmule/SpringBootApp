@@ -47,4 +47,5 @@ steps:
 - task: Docker@2
   inputs:
     command: 'build'
-    Dockerfile: 'https://github.com/dhanashrigurmule/SpringBootApp/blob/main/src/main/java/com/example/amol/demo/Dockerfile'
+    Dockerfile: '$(Build.ArtifactStagingDirectory)**/Dockerfile'
+    buildContext: '$(Build.ArtifactStagingDirectory)'
