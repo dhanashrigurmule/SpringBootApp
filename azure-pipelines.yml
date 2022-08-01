@@ -45,9 +45,15 @@ steps:
 #    Contents: 'Dockerfile'
 #    TargetFolder: '$(Build.ArtifactStagingDirectory)'
     
+#- task: Docker@2
+#  displayName: Build an image
+#  inputs:
+#    repository: $(imageName)
+#    command: build
+#    Dockerfile: app/Dockerfile
+
 - task: Docker@2
-  displayName: Build an image
   inputs:
-    repository: $(imageName)
-    command: build
-    Dockerfile: app/Dockerfile
+    command: 'build'
+    Dockerfile: '$(Build.ArtifactStagingDirectory)**/Dockerfile'
+    buildContext: '$(Build.ArtifactStagingDirectory)'
