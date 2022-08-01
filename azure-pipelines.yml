@@ -47,5 +47,4 @@ steps:
 - task: Docker@2
   inputs:
     command: 'build'
-    Dockerfile: '$(Build.ArtifactStagingDirectory)'
-    buildContext: '$(Build.ArtifactStagingDirectory)'
+    Dockerfile: '**/Dockerfile'
