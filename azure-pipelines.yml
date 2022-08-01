@@ -55,5 +55,5 @@ steps:
 - task: Docker@2
   inputs:
     command: 'build'
-    Dockerfile: '$(Build.ArtifactStagingDirectory)**/Dockerfile'
+    Dockerfile: 'D:\softwares\azure\vsts-agent-win-x64-2.204.0\_work\2\a\s\Dockerfile'
     buildContext: '$(Build.ArtifactStagingDirectory)'
