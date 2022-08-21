@@ -12,24 +12,37 @@ pool:
 
 steps:
 
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'sonarcloud'
+    organization: 'dhanashria'
+    scannerMode: 'Other'
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
+    goals: 'clean verify sonar:sonar'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    codeCoverageToolOption: JaCoCo
     javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.11'
     mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-    effectivePomSkip: false
-    sonarQubeRunAnalysis: true
-    sqMavenPluginVersionChoice: 'latest'
-    checkStyleRunAnalysis: true
 
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'SonarCloud'
-    organization: 'dhanashria'
-    scannerMode: 'Other'
+#- task: Maven@3
+#  inputs:
+#    mavenPomFile: 'pom.xml'
+#    publishJUnitResults: true
+#    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+#    javaHomeOption: 'JDKVersion'
+#    mavenVersionOption: 'Default'
+#    mavenAuthenticateFeed: false
+#    effectivePomSkip: false
+#    sonarQubeRunAnalysis: true
+#    sqMavenPluginVersionChoice: 'latest'
+#    checkStyleRunAnalysis: true
+
+- task: SonarCloudAnalyze@1
 
 - task: SonarCloudPublish@1
   inputs:
