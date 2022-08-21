@@ -24,9 +24,7 @@ steps:
     goals: 'clean verify sonar:sonar'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    codeCoverageToolOption: JaCoCo
     javaHomeOption: 'JDKVersion'
-    #jdkVersionOption: '1.11'
     mavenVersionOption: 'Default'
 
 #- task: Maven@3
