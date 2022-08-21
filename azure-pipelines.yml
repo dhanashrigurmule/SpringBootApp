@@ -12,12 +12,6 @@ pool:
 
 steps:
 
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'SonarCloud'
-    organization: 'dhanashria'
-    scannerMode: 'Other'
-
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -30,9 +24,12 @@ steps:
     sonarQubeRunAnalysis: true
     sqMavenPluginVersionChoice: 'latest'
     checkStyleRunAnalysis: true
-    pmdRunAnalysis: true
-    findBugsRunAnalysis: true
-    spotBugsRunAnalysis: true
+
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'SonarCloud'
+    organization: 'dhanashria'
+    scannerMode: 'Other'
 
 - task: SonarCloudPublish@1
   inputs:
