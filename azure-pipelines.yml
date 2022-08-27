@@ -25,7 +25,7 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(agent.builddirectory)'
-    Contents: '.jar'
+    Contents: '*.jar'
     TargetFolder: '$(build.artifactstagingdirectory)'
   
 - task: PublishBuildArtifacts@1
