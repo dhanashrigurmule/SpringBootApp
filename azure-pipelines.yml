@@ -22,10 +22,21 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-#- task: CopyFiles@2
-#  inputs:
-#    SourceFolder: '$(agent.builddirectory)'
-#    Contents: '**'
-#    TargetFolder: '$(build.artifactstagingdirectory)'
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(agent.builddirectory)'
+    Contents: '**'
+    TargetFolder: '$(build.artifactstagingdirectory)'
   
 - task: PublishBuildArtifacts@1
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)' 
+    #includeRootFolder: true 
+    archiveType: 'zip'
+    #tarCompression: 'gz' # Optional. Options: gz, bz2, xz, none
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip' 
+    replaceExistingArchive: true 
+    #verbose: # Optional
+    #quiet: # Optional
