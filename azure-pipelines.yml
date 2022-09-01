@@ -22,14 +22,17 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(build.artifactstagingdirectory)/s/target' 
-    includeRootFolder: true 
-    archiveType: 'zip'
-    archiveFile: 'abc.zip' 
-    #'$(Build.Sourcesdirectory)/folderA')
-    replaceExistingArchive: true 
+- bash: |
+    echo $(build.artifactstagingdirectory)
+
+# - task: ArchiveFiles@2
+#   inputs:
+#     rootFolderOrFile: '$(build.artifactstagingdirectory)/s/target' 
+#     includeRootFolder: true 
+#     archiveType: 'zip'
+#     archiveFile: 'abc.zip' 
+#     #'$(Build.Sourcesdirectory)/folderA')
+#     replaceExistingArchive: true 
 
   
 
