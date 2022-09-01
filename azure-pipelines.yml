@@ -27,7 +27,7 @@ steps:
     rootFolderOrFile: '$(build.artifactstagingdirectory)' 
     includeRootFolder: true 
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/**/*.zip' 
+    archiveFile: '$(Build.ArtifactStagingDirectory)/_work/5/s/target.zip' 
     #'$(Build.Sourcesdirectory)/folderA')
     replaceExistingArchive: true 
     
