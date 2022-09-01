@@ -24,10 +24,10 @@ steps:
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(Build.Repository.LocalPath)/target' 
+    rootFolderOrFile: '$(Build.Repository.LocalPath)/target/app-2.7.0.jar' 
     includeRootFolder: true 
     archiveType: 'zip'
-    archiveFile: 'amol.zip' 
+    archiveFile: 'app-2.7.0.zip' 
     replaceExistingArchive: true 
 
   
