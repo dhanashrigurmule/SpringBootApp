@@ -24,10 +24,10 @@ steps:
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(build.artifactstagingdirectory)' 
+    rootFolderOrFile: '$(build.artifactstagingdirectory)/target' 
     includeRootFolder: true 
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/_work/5/s/target.zip' 
+    archiveFile: '$(Build.ArtifactStagingDirectory)/target.zip' 
     #'$(Build.Sourcesdirectory)/folderA')
     replaceExistingArchive: true 
     
