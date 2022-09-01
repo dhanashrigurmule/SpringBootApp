@@ -11,29 +11,24 @@ pool:
   Image: LocalMachine
 
 steps:
-# - task: Maven@3
-#   inputs:
-#     mavenPomFile: 'pom.xml'
-#     mavenOptions: '-Xmx3072m'
-#     javaHomeOption: 'JDKVersion'
-#     jdkVersionOption: '1.8'
-#     jdkArchitectureOption: 'x64'
-#     publishJUnitResults: false
-#     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-#     goals: 'package'
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: false
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    goals: 'package'
 
-- script:
-    echo $(Build.Repository.LocalPath)
-    echo $(Build.BinariesDirectory)
-
-# - task: ArchiveFiles@2
-#   inputs:
-#     rootFolderOrFile: '$(build.artifactstagingdirectory)/s/target' 
-#     includeRootFolder: true 
-#     archiveType: 'zip'
-#     archiveFile: 'abc.zip' 
-#     #'$(Build.Sourcesdirectory)/folderA')
-#     replaceExistingArchive: true 
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(build.artifactstagingdirectory)/target' 
+    includeRootFolder: true 
+    archiveType: 'zip'
+    archiveFile: 'amol.zip' 
+    replaceExistingArchive: true 
 
   
 
