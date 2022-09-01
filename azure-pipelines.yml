@@ -22,7 +22,7 @@ steps:
 #     testResultsFiles: '**/surefire-reports/TEST-*.xml'
 #     goals: 'package'
 
-- bash: |
+- script:
     echo $(build.artifactstagingdirectory)
     echo $(Build.BinariesDirectory)
 
