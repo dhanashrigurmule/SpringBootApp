@@ -23,7 +23,7 @@ steps:
 #     goals: 'package'
 
 - script:
-    echo $(build.artifactstagingdirectory)
+    echo $(Build.Repository.LocalPath)
     echo $(Build.BinariesDirectory)
 
 # - task: ArchiveFiles@2
