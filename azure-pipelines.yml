@@ -28,9 +28,14 @@ steps:
     Contents: '**'
     TargetFolder: '$(build.artifactstagingdirectory)'
   
-- task: PublishBuildArtifacts@1
+- task: PublishPipelineArtifact@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    FileCopyOptions: zip
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    targetPath: '$(Pipeline.Workspace)'
+    publishLocation: 'pipeline'
+
+#- task: PublishBuildArtifacts@1
+#  inputs:
+#    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#    FileCopyOptions: zip
+#    ArtifactName: 'drop'
+#    publishLocation: 'Container'
