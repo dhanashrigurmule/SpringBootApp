@@ -11,29 +11,29 @@ pool:
   Image: LocalMachine
 
 steps:
-# - task: Maven@3
-#   inputs:
-#     mavenPomFile: 'pom.xml'
-#     mavenOptions: '-Xmx3072m'
-#     javaHomeOption: 'JDKVersion'
-#     jdkVersionOption: '1.8'
-#     jdkArchitectureOption: 'x64'
-#     publishJUnitResults: false
-#     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-#     goals: 'package'
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: false
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    goals: 'package'
 
-# - task: ArchiveFiles@2
-#   inputs:
-#     rootFolderOrFile: '$(Build.Repository.LocalPath)/target/app-2.7.0.jar' 
-#     includeRootFolder: true 
-#     archiveType: 'zip'
-#     archiveFile: 'app-2.7.0.zip' 
-#     replaceExistingArchive: true 
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.Repository.LocalPath)/target/app-2.7.0.jar' 
+    includeRootFolder: true 
+    archiveType: 'zip'
+    archiveFile: 'app-2.7.0.zip' 
+    replaceExistingArchive: true 
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.Repository.LocalPath)/app-2.7.0.zip'
-    Contents: '**'
+    SourceFolder: '$(Build.Repository.LocalPath)'
+    Contents: '*.zip*'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
   
 # - task: PublishPipelineArtifact@1
