@@ -10,9 +10,13 @@ pool:
   name: vm
   Image: vm-build
 
-stages:
-  - stage:
-# steps:
+steps:
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(agent.builddirectory)'
+    Contents: '**'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
 # - task: Maven@3
 #   inputs:
 #     mavenPomFile: 'pom.xml'
