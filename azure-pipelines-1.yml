@@ -10,6 +10,8 @@ pool:
   name: vm
   Image: vm-build
 
+stages:
+  - stage:
 # steps:
 # - task: Maven@3
 #   inputs:
