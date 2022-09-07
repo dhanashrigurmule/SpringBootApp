@@ -10,7 +10,7 @@ pool:
   name: vm
   Image: vm-build
 
-steps:
+# steps:
 # - task: Maven@3
 #   inputs:
 #     mavenPomFile: 'pom.xml'
