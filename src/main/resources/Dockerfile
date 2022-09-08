@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM eclipse-temurin:17-jdk-jammy
+FROM java:8-jdk
 #WORKDIR /app
 #COPY .mvn/ .mvn
 #COPY mvnw pom.xml ./
