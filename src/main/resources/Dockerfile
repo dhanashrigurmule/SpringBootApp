@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM java:8-jdk
+FROM suranagivinod/openjdk8
 #WORKDIR /app
 #COPY .mvn/ .mvn
 #COPY mvnw pom.xml ./
