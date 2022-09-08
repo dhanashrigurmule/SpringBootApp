@@ -6,13 +6,12 @@
 trigger:
 - main
 
-pool:
-  name: LocalAGPL
-  Image: LocalMachine
-
 stages:
   - stage: Build
     displayName: Build image
+    pool:
+      name: LocalAGPL
+      Image: LocalMachine
     jobs:  
     - job: Build
       displayName: Build and push Docker image
