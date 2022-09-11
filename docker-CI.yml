@@ -18,8 +18,8 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      name: vm
-      Image: unix-vm-agent
+      name: LocalAGPL
+      Image: LocalMachine
     steps:
     - task: Docker@2
       displayName: Build an image
