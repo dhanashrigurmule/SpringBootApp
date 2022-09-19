@@ -15,8 +15,8 @@ COPY . /usr/src/app
 # Compile and package the application to an executable JAR
 RUN mvn package 
 
-# For Java 11, 
-FROM suranagivinod/openjdk8
+# For Java 11,  (suranagivinod/openjdk8)
+FROM scratch
 
 ARG JAR_FILE=app-2.7.0.war
 
