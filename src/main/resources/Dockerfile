@@ -16,13 +16,13 @@ COPY . /usr/src/app
 RUN mvn package 
 
 # For Java 11,  (suranagivinod/openjdk8)
-FROM scratch
+#FROM scratch
 
-ARG JAR_FILE=app-2.7.0.war
+#ARG JAR_FILE=app-2.7.0.war
 
-WORKDIR /opt/app
+#WORKDIR /opt/app
 
 # Copy the spring-boot-api-tutorial.jar from the maven stage to the /opt/app directory of the current stage.
-COPY --from=maven /usr/src/app/target/${JAR_FILE} /opt/app/
+#COPY --from=maven /usr/src/app/target/${JAR_FILE} /opt/app/
 
-ENTRYPOINT ["java","-jar","app.2.7.0.war"]
+#ENTRYPOINT ["java","-jar","app.2.7.0.war"]
